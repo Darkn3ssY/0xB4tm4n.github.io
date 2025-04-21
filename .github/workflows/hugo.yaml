@@ -3,19 +3,16 @@
 name: Deploy Hugo site to Pages
 
 on:
-  # Run on pushes to main, and allow manual runs
   push:
     branches: ["main"]
   workflow_dispatch:
 
-# Restore the default token scopes plus what's needed for Pages
 permissions:
-  actions:   read   # allow downloading marketplace actions
+  actions:   read
   contents:  read
   pages:     write
   id-token:  write
 
-# Only one Pages deploy at a time; don't cancel the one in progress
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -60,6 +57,13 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Prefetch upload-artifact explicitly
+        uses: actions/upload-artifact@v3
+        with:
+          name: dummy
+          path: ./nonexistentfile.txt
+        continue-on-error: true  # since the file doesn’t exist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
