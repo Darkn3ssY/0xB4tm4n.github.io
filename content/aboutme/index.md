@@ -6,13 +6,12 @@ description: "About Me"
 
 lightgallery: true
 
-math:
-  enable: true
+
 ---
 
 # Background Information
 
-I am **0xB4tm4n** , I like sciences, and computers.
+I am **0xB4tm4n** , I like sciences, and computers & interested in DFIR and PT
 
 [My resume (PDF)]()
  
