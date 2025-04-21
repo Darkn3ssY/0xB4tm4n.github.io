@@ -33,7 +33,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 # Author config
 [author]
   name = "0xB4tm4n"
-  email = "yassir.sd02@gmail.com"
   link = "https://darkn3ssy.github.io/"
 
 # Menu config
@@ -211,7 +210,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     GitHub = "Darkn3ssY"
     Discord = "d4rk_y"
     #RootMe= ""
-    Email = "yassir.sd02@gmail.com"
     #RSS = true # 
 
   #  Page global config
