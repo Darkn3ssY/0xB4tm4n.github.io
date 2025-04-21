@@ -4,8 +4,8 @@ title: "HTB Cyber Apocalypse 2024 - Path of Survival"
 date: 2024-01-29T16:37:00+06:00  
 lastmod: 2024-01-29T16:37:00+06:00  
 draft: false  
-author: "HostileNinja72"  
-authorLink: "https://HostileNinja72.github.io"  
+author: "0xB4tm4n"  
+authorLink: "https://darkn3ssy.github.io/"  
 description: "Writeup for Path of Survival Misc Challenge."
 
 tags: ["misc", "HTB", "algorithms", "Dijkstra", "hard", "A*"]  
@@ -29,7 +29,7 @@ Writeup for the "Path of Survival" challenge from HTB Cyber Apocalypse CTF 2024.
 
 Upon starting the instance, we receive an IP and a port. Connecting to the service reveals what appears to be a game.
 
-<kbd> <img src="https://github.com/hostileninja72/hostileninja72.github.io/blob/main/content/posts/htb/initial_view.png?raw=true" style="border-radius:2%" align="center" width = "100%" /> </kbd>
+<kbd> <img src="https://github.com/darkn3ssy/darkn3ssy.github.io/blob/main/content/posts/htb/initial_view.png?raw=true" style="border-radius:2%" align="center" width = "100%" /> </kbd>
 
 The game features multiple squares, each with a specific image representing its nature. There is also a player icon. Reading the rules, we learn that the objective is to travel between tiles to reach a weapon tile before time runs out.
 

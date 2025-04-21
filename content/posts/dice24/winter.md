@@ -4,8 +4,8 @@ title: "DiceCTF 2024 - Winter"
 date: 2024-02-15T16:37:00+06:00
 lastmod: 2024-02-15T16:37:00+06:00
 draft: false
-author: "HostileNinja72"
-authorLink: "https://HostileNinja72.github.io"
+author: "0xB4tm4n"
+authorLink: "https://darkn3ssy.github.io/"
 description: "Writeup for the winter Cryptography challenge."
 
 tags: ["crypto", "DiceCTF", "hash", "winternitz", "english"]

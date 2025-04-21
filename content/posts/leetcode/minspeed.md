@@ -4,8 +4,8 @@ title: "LeetCode - 1870, Minimum Speed to Arrive on Time"
 date: 2024-08-20T16:37:00+06:00
 lastmod: 2024-08-20T16:37:00+06:00
 draft: false
-author: "HostileNinja72"
-authorLink: "https://HostileNinja72.github.io"
+author: "0xB4tm4n"
+authorLink: "https://darkn3ssy.github.io/"
 description: "LeetCode 1870 solution explanation"
 
 tags: ["LeetCode", "Medium", "binary search", "C++"]
