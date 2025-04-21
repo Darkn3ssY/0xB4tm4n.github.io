@@ -79,7 +79,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # website title for Open Graph and Twitter Cards
   title = "0xB4tm4n's blog"
   # website description for RSS, SEO, Open Graph and Twitter Cards
-  description = "$ sudo apt install pwntools"
+  description = "$ sudo apt-get update"
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
 
@@ -190,7 +190,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       #  title shown in home page (HTML format is supported)
       title = "Blogs"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "$ sudo apt install pwntools"
+      subtitle = "$ sudo apt-get update"
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
