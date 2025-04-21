@@ -23,7 +23,7 @@ defaults:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       HUGO_VERSION: 0.108.0
 
@@ -58,13 +58,6 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Prefetch upload-artifact explicitly
-        uses: actions/upload-artifact@v3
-        with:
-          name: dummy
-          path: ./nonexistentfile.txt
-        continue-on-error: true  # since the file doesn’t exist
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -72,7 +65,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
