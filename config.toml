@@ -184,7 +184,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "https://images.wallpapersden.com/image/download/hd-batman-red-gotham-city_bmdtam6UmZqaraWkpJRmbmdlrWZlbWU.jpg"
+      avatarURL = "https://avatars.githubusercontent.com/u/90354895?v=4"
       
       #  title shown in home page (HTML format is supported)
       title = "Blogs"
@@ -213,7 +213,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     #RSS = true # 
 
   #  Page global config
-  
+
   [params.page]
     #  whether to hide a page from home page
     hiddenFromHomePage = false
