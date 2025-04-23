@@ -1,8 +1,8 @@
 ---
 weight: 1
 title: "UMASSCTF 2025 - OddOneOut"
-date: 2025
-lastmod: 2025
+date: 2025-04-19
+lastmod: 2025-04-19
 draft: false
 author: "0xB4tm4n"
 authorLink: "https://darkn3ssy.github.io/"
