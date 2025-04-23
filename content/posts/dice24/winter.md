@@ -1,14 +1,14 @@
 ---
 weight: 1
-title: "DiceCTF 2024 - Winter"
-date: 2024-02-15T16:37:00+06:00
-lastmod: 2024-02-15T16:37:00+06:00
+title: "UMASSCTF 2025 - OddOneOut"
+date: 2025
+lastmod: 2025
 draft: false
 author: "0xB4tm4n"
 authorLink: "https://darkn3ssy.github.io/"
-description: "Writeup for the winter Cryptography challenge."
+description: "Writeup for the Misc challenge in UMASSCTF 2025."
 
-tags: ["crypto", "DiceCTF", "hash", "winternitz", "english"]
+tags: ["Investigation", "MISC", "Stegano", "python", "RGB"]
 categories: ["Writeups"]
 
 lightgallery: true
@@ -19,156 +19,54 @@ math:
 toc:
   enable: true
 ---
+OddOneOut [misc]
 
-Writeup for Winter challenge from DiceCTF 2024.
+- **Description**
+    
+    > I forgot to organize my encrypted flags for this challenge! Can you find the odd one out? I could have sworn it was a different color...
+- View Hint
+    
+    Not all solvers will work on this. If you get stuck, try a different way! 
+    
+- View Hint
+    
+    The oddoneout challenge is multilayer! You'll know you have the right one if it looks like a real word
+    
 
-<!--more-->
+![OddOneOut.png](https://github.com/user-attachments/assets/27d8bf7f-8cde-4d84-a5c4-b16f531458cd)
 
-First, we are given the following code:
+So, what I did is, first thing I ran `zsteg`
 
-```python
-import os
-from hashlib import sha256
-class Wots:
-    def __init__(self, sk, vk):
-        self.sk = sk
-        self.vk = vk
-    @classmethod
-    def keygen(cls):
-        sk = [os.urandom(32) for _ in range(32)]
-        vk = [cls.hash(x, 256) for x in sk]
-        return cls(sk, vk)
-        
-    @classmethod
-    def hash(cls, x, n):
-        for _ in range(n):
-            x = sha256(x).digest()
-        return x
-        
-    def sign(self, msg):
-        m = self.hash(msg, 1)
-        sig = b''.join([self.hash(x, 256 - n) for x, n in zip(self.sk, m)])
-        return sig
+I got this:
 
-  
-    def verify(self, msg, sig):
-        chunks = [sig[i:i+32] for i in range(0, len(sig), 32)]
-        m = self.hash(msg, 1)
-        vk = [self.hash(x, n) for x, n in zip(chunks, m)]
-        return self.vk == vk
-
-  
-
-if __name__ == '__main__':
-    with open('flag.txt') as f:
-        flag = f.read().strip()
-        
-    wots = Wots.keygen()
-    msg1 = bytes.fromhex(input('give me a message (hex): '))
-    sig1 = wots.sign(msg1)
-    assert wots.verify(msg1, sig1)
-    print('here is the signature (hex):', sig1.hex())
-
-    msg2 = bytes.fromhex(input('give me a new message (hex): '))
-    if msg1 == msg2:
-        print('cheater!')
-        exit()
-    sig2 = bytes.fromhex(input('give me the signature (hex): '))
-    
-    if wots.verify(msg2, sig2):
-        print(flag)
-    else:
-        print('nope')
-
-```
-
-## Code Description
-
-The Python code implements the WOTS and includes the following main functionalities:
-
-- `keygen`: Generates a pair of private and public keys.
-- `sign`: Signs a given message using the private key.
-- `verify`: Verifies the signature of a message against the public key.
-
-The script reads a message, signs it, and then asks for a new message and its signature. The goal is to provide a valid signature for the second message to retrieve the flag.
-
-## Exploitation Strategy
-
-The verification method checks if the extracted public key from the provided signature matches the generated public key. The public key components are each of the private keys hashed 256 times.
-
-The signature consists of each of the 32 private keys hashed `256 - n` times, where `n` is the value of a byte of the message hashed with SHA-256.
-
-To exploit this, we craft two messages, `m1` and `m2`, such that each byte in `SHA-256(m1)` is greater than `SHA-256(m2)`. Then we calculate the differences between each byte of `SHA-256(m1)` and `SHA-256(m2)`. The server provides the signature of `m1`. We divide this signature into 32 chunks and hash each chunk according to its difference. This gives us the corresponding signature of `m2`, revealing the flag.
-
-## Script for Finding Messages
-
-The following Python script finds two messages meeting our criteria:
-
-```python
-import hashlib
-import os
-
-def find_messages():
-    count = 0
-    while True:
-        msg1 = os.urandom(32)
-        msg2 = os.urandom(32)
-        hash1 = hashlib.sha256(msg1).digest()
-        hash2 = hashlib.sha256(msg2).digest()
-
-        if all(a > b for a, b in zip(hash1, hash2)):
-            print(f"Found messages after {count} attempts:")
-            print(f"Message 1: {msg1.hex()}")
-            print(f"Hash 1: {hash1.hex()}")
-            print(f"Message 2: {msg2.hex()}")
-            print(f"Hash 2: {hash2.hex()}")
-            break
-        count += 1
-        if count % 10000 == 0:
-            print(f"Checked {count} message pairs so far...")
-
-if __name__ == '__main__':
-    find_messages()
-```
-Our script has found two messages:
-
-Message 1: 158b9f4c26df4898666a79e69d19f7209b2fe9efe8525b4301b352e49dca7ba0
-
-Hash 1:    daa882b5ecc37b44dd6b50b2e5acb0dac0d659f5f897b05899aedcfdd2dca57c
-
-Message 2: cde750320a8389a6192216bf8bae3d37cd6d94a150741724d36305dfff746bb0
-
-Hash 2:    6da20d01be665436a03542585821a093539153735f7f22453fad3ba17003175c
+![image](https://github.com/user-attachments/assets/94114f0b-e6e4-4282-a151-eede3c112d54)
 
 
-## Solution Script
+I Noticed  a useless String 
 
-```python
-from hashlib import sha256
+I read the description carefully, and it mentioned something about it being a different color. The hint also talked about multiple layers, so I ran `zsteg-mask`, which extracted the layers with different colors. Then, I got this image
 
-def hash(x, n):
-    for _ in range(n):
-        x = sha256(x).digest()
-    return x
+![image](https://github.com/user-attachments/assets/88e98583-3e52-4f5f-9ee5-050e91d9f367)
 
-sig_hex = input("Give me the signature: ")
-sig_bytes = bytes.fromhex(sig_hex)
-chunks = [sig_bytes[i:i+32] for i in range(0, len(sig_bytes), 32)]
-diff = [109, 6, 117, 180, 46, 93, 39, 14, 61, 54, 14, 90, 141, 139, 16, 71, 109, 69, 6, 130, 153, 24, 142, 19, 90, 1, 161, 92, 98, 217, 142, 32]
 
-sig2 = b""
+I scanned that QR code it gives me this  **`UMASS{{rcckuizufzxhznod}}`**  I thought it's the flag but when I tried to submit it … incorrect . hmm while I was thinking I noticed this black image that I got too from `zsteg-mask` 
 
-for chunk, d in zip(chunks, diff):
-    hashed_chunk = hash(chunk, d)
-    sig2 += hashed_chunk
-sig2_hex = sig2.hex()
+![image](https://github.com/user-attachments/assets/cee17f67-6670-4c78-a128-2756327efd2e)
 
-with open('output.txt', 'w') as file:
-    file.write(sig2_hex)
+there was some data at the top I tried to extract those using `https://stegonline.georgeom.net/upload`
 
-print("The second signature has been written to output.txt.")
-``` 
+I got this 
 
-Input this signature to the server to retrieve the flag: 
+`when i tried to extract i got this what i got now Man I RE  ALLY lik  e square  s. I thi  nk cubes   are coo  l too. Q  R codes   are trul  y the pi  nnacle o  f modern   data en  coding..  .Also, w  hile you  're root  ing arou  nd in he  re, I'm   taking a   poll: d  id you e  ver play   coolmat  h games   as a kid  ?..If yo  u did: g  reat! I   hope you   played   Bloxorz.  .If you   didn't:   that's a   travest  y and yo  u should   go play   Bloxorz   right n  ow. Or m  aybe aft  er you s  olve thi  s challe  nge. It'  s the ke  y to all   your pr  oblems.. this is all i got s`
 
-`dice{according_to_geeksforgeeks}`
+at the end it says `Bloxorz` its the key to all your problems
+
+then I went to cyber chef to try some ciphers … it was Vigenere cipher
+
+`Bloxorz + {rcckuizufzxhznod} = {qrongratulations}` 
+
+![image](https://github.com/user-attachments/assets/b89cdce7-3f7e-499b-8ad1-cc1b4aea3a71)
+
+ 
+
+so the final flag is `UMASS{qrongratulations}`
