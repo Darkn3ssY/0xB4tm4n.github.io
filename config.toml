@@ -184,7 +184,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "https://avatars.githubusercontent.com/u/90354895?v=4"
+      avatarURL = "https://images.wallpapersden.com/image/download/hd-batman-red-gotham-city_bmdtam6UmZqaraWkpJRmbmdlrWZlbWU.jpg"
       
       #  title shown in home page (HTML format is supported)
       title = "Blogs"
@@ -207,7 +207,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # Social config about the author
   [params.social]
-    GitHub = "Darkn3ssY"
+    #GitHub = "Darkn3ssY"
     Discord = "d4rk_y"
     #RootMe= ""
     #RSS = true # 
