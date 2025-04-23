@@ -8,7 +8,7 @@ author: "0xB4tm4n"
 authorLink: "https://darkn3ssy.github.io/"
 description: "Writeup for the Misc challenge in UMASSCTF 2025"
 
-tags: ["Investigation", "MISC", "Stegano", "python", "RGB"]
+tags: ["Investigation", "MISC", "Stegano","Forensics"]
 categories: ["Writeups"]
 
 lightgallery: true
