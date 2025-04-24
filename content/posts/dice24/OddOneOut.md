@@ -57,7 +57,7 @@ there was some data at the top I tried to extract those using `https://stegonlin
 
 I got this 
 
-`when i tried to extract i got this what i got now Man I RE  ALLY lik  e square  s. I thi  nk cubes   are coo  l too. Q  R codes   are trul  y the pi  nnacle o  f modern   data en  coding..  .Also, w  hile you  're root  ing arou  nd in he  re, I'm   taking a   poll: d  id you e  ver play   coolmat  h games   as a kid  ?..If yo  u did: g  reat! I   hope you   played   Bloxorz.  .If you   didn't:   that's a   travest  y and yo  u should   go play   Bloxorz   right n  ow. Or m  aybe aft  er you s  olve thi  s challe  nge. It'  s the ke  y to all   your pr  oblems.. this is all i got s`
+`Man I RE  ALLY lik  e square  s. I thi  nk cubes   are coo  l too. Q  R codes   are trul  y the pi  nnacle o  f modern   data en  coding..  .Also, w  hile you  're root  ing arou  nd in he  re, I'm   taking a   poll: d  id you e  ver play   coolmat  h games   as a kid  ?..If yo  u did: g  reat! I   hope you   played   Bloxorz.  .If you   didn't:   that's a   travest  y and yo  u should   go play   Bloxorz   right n  ow. Or m  aybe aft  er you s  olve thi  s challe  nge. It'  s the ke  y to all   your pr  oblems.. this is all i got s`
 
 at the end it says `Bloxorz` its the key to all your problems
 
